@@ -17,9 +17,23 @@ public class GoogleSearchPage {
        private WebElement searchText;
 
 
+    @FindBy(xpath = "(//div [contains(text() ,'Accept all')])[2]")
+    private WebElement Cookies;
+
 
     public void searchFor(String key){
         searchText.sendKeys(key + Keys.ENTER);
+
+
+
+
+    }
+
+    public void CookiesButton(){
+      Cookies.click();
+
+
+
 
     }
 

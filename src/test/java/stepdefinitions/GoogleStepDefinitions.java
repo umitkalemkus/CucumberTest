@@ -4,10 +4,15 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import pages.GoogleSearchPage;
 import utilities.Driver;
 
 public class GoogleStepDefinitions {
+
+
     @Given("Kullanici google sayfasindadir")
     public void kullaniciGoogleSayfasindadir() {
         Driver.getDriver().get("https://www.google.com/");
@@ -18,7 +23,9 @@ public class GoogleStepDefinitions {
     @When("Kullanici samsung kelimesini arar")
     public void kullaniciSamsungKelimesiniArar() {
         GoogleSearchPage sp = new GoogleSearchPage(Driver.getDriver());
+        sp.CookiesButton();
         sp.searchFor("samsung");
+
 
     }
 
@@ -28,5 +35,34 @@ public class GoogleStepDefinitions {
         Assert.assertTrue(Driver.getDriver().getTitle().contains("samsung"));
         Driver.closeDriver();
 
+
+    }
+
+
+    @When("Kullanici cucumber kelimesini arar")
+    public void kullaniciCucumberKelimesiniArar() {
+
+        GoogleSearchPage sp = new GoogleSearchPage(Driver.getDriver());
+        sp.CookiesButton();
+        sp.searchFor("cucumber");
+
+
+
+    }
+
+    @Then("Kullanici sayfada cucumber  kelimesi gectigini dogrular.")
+    public void kullaniciSayfadaCucumberKelimesiGectiginiDogrular() {
+        Assert.assertTrue(Driver.getDriver().getTitle().contains("cucumber"));
+        Driver.closeDriver();
+
+
+    }
+
+    @When("Kullanici selenium kelimesini arar")
+    public void kullaniciSeleniumKelimesiniArar() {
+    }
+
+    @Then("Kullanici sayfada selenium  kelimesi gectigini dogrular.")
+    public void kullaniciSayfadaSeleniumKelimesiGectiginiDogrular() {
     }
 }
