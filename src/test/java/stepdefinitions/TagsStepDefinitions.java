@@ -31,4 +31,6 @@ public class TagsStepDefinitions {
     @Then("Regression basarili olmali")
     public void regressionBasariliOlmali() {
     }
+
+    //@FindBy(xpath = "(//div [contains(text() ,'Accept all')])[2]")
 }
